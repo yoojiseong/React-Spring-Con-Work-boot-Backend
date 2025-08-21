@@ -17,13 +17,13 @@ public class SampleController {
     @Tag(name = "샘플 레스트",
             description = "AAA, BBB, CCC 출력 테스트")
     @GetMapping("/doA")
-    @PreAuthorize("hasRole('ROLE_USER')")
+//    @PreAuthorize("hasRole('ROLE_USER')")
     public List<String> doA() {
         return Arrays.asList("AAA", "BBB", "C");
     }
 
     @GetMapping("/doB")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<String> doB() {
         return Arrays.asList("AdminAAA", "AdminBBB", "AdminCCC");
     }
