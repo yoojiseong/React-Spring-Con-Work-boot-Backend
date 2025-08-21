@@ -14,5 +14,7 @@ public class CustomServletConfig implements WebMvcConfigurer {
         registry
                 .addResourceHandler("/files/**") // 요청 경로 매핑
                 .addResourceLocations("classpath:/static/"); // 실제 리소스 위치
+        // 접근 예시
+//        http://localhost:8080/files/sample.html
     }
 }
