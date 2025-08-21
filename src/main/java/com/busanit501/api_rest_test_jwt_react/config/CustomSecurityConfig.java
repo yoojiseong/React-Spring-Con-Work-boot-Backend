@@ -2,6 +2,7 @@ package com.busanit501.api_rest_test_jwt_react.config;
 
 import com.busanit501.api_rest_test_jwt_react.security.APIUserDetailsService;
 import com.busanit501.api_rest_test_jwt_react.security.filter.APILoginFilter;
+import com.busanit501.api_rest_test_jwt_react.security.handler.APILoginSuccessHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
@@ -80,9 +81,10 @@ public class CustomSecurityConfig {
 
         // APILoginSuccessHandler 생성: 인증 성공 후 처리 로직을 담당
 //        APILoginSuccessHandler successHandler = new APILoginSuccessHandler(jwtUtil);
+        APILoginSuccessHandler successHandler = new APILoginSuccessHandler();
 
 // SuccessHandler 설정: 로그인 성공 시 APILoginSuccessHandler가 호출되도록 설정
-//        apiLoginFilter.setAuthenticationSuccessHandler(successHandler);
+        apiLoginFilter.setAuthenticationSuccessHandler(successHandler);
 
         //APILoginFilter의 위치 조정 세팅1, 사용자 인증 전에 ,
         http.addFilterBefore(apiLoginFilter, UsernamePasswordAuthenticationFilter.class);
