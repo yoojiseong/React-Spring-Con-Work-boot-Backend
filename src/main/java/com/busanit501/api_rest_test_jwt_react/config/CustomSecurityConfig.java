@@ -3,6 +3,7 @@ package com.busanit501.api_rest_test_jwt_react.config;
 import com.busanit501.api_rest_test_jwt_react.security.APIUserDetailsService;
 import com.busanit501.api_rest_test_jwt_react.security.filter.APILoginFilter;
 import com.busanit501.api_rest_test_jwt_react.security.handler.APILoginSuccessHandler;
+import com.busanit501.api_rest_test_jwt_react.util.JWTUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
@@ -34,7 +35,7 @@ import java.util.Arrays;
 public class CustomSecurityConfig {
     //추가 1-1
     private final APIUserDetailsService apiUserDetailsService;
-//    private final JWTUtil jwtUtil;
+    private final JWTUtil jwtUtil;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
@@ -80,8 +81,8 @@ public class CustomSecurityConfig {
         apiLoginFilter.setAuthenticationManager(authenticationManager);
 
         // APILoginSuccessHandler 생성: 인증 성공 후 처리 로직을 담당
-//        APILoginSuccessHandler successHandler = new APILoginSuccessHandler(jwtUtil);
-        APILoginSuccessHandler successHandler = new APILoginSuccessHandler();
+        APILoginSuccessHandler successHandler = new APILoginSuccessHandler(jwtUtil);
+//        APILoginSuccessHandler successHandler = new APILoginSuccessHandler();
 
 // SuccessHandler 설정: 로그인 성공 시 APILoginSuccessHandler가 호출되도록 설정
         apiLoginFilter.setAuthenticationSuccessHandler(successHandler);

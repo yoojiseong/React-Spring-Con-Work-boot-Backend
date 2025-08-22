@@ -34,7 +34,7 @@ public class JWTUtilTests {
     @Test
     public void testValidate() {
         // 유효 시간이 지난 토큰
-        String jwtStr = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtaWQiOiJsc3kiLCJpYXQiOjE3Mzg2Mjc4NjgsImV4cCI6MTczODcxNDI2OH0.zBfIcWj8lKAcrvIjWG_WFLjjWdiXa_friSYE1ecFBMQ";
+        String jwtStr = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJtaWQiOiJsc3kiLCJpYXQiOjE3NTU4MjU0ODEsImV4cCI6MTc1NTkxMTg4MX0.yxLgzl45yx4q9-ocvQfSH_k5lPUrJKbW6bsMMT72Et4";
 
         try {
             // 토큰 검증 및 Claims 추출
