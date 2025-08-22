@@ -2,6 +2,7 @@ package com.busanit501.api_rest_test_jwt_react.config;
 
 import com.busanit501.api_rest_test_jwt_react.security.APIUserDetailsService;
 import com.busanit501.api_rest_test_jwt_react.security.filter.APILoginFilter;
+import com.busanit501.api_rest_test_jwt_react.security.filter.TokenCheckFilter;
 import com.busanit501.api_rest_test_jwt_react.security.handler.APILoginSuccessHandler;
 import com.busanit501.api_rest_test_jwt_react.util.JWTUtil;
 import lombok.RequiredArgsConstructor;
@@ -91,10 +92,10 @@ public class CustomSecurityConfig {
         http.addFilterBefore(apiLoginFilter, UsernamePasswordAuthenticationFilter.class);
 
         // /api 경로에 대해 TokenCheckFilter 적용
-//        http.addFilterBefore(
-//                tokenCheckFilter(jwtUtil,apiUserDetailsService),
-//                UsernamePasswordAuthenticationFilter.class
-//        );
+        http.addFilterBefore(
+                tokenCheckFilter(jwtUtil,apiUserDetailsService),
+                UsernamePasswordAuthenticationFilter.class
+        );
 
         // RefreshTokenFilter를 TokenCheckFilter 이전에 등록
 //        http.addFilterBefore(
@@ -110,9 +111,9 @@ public class CustomSecurityConfig {
         return http.build();
     }
 
-//    private TokenCheckFilter tokenCheckFilter(JWTUtil jwtUtil, APIUserDetailsService apiUserDetailsService){
-//        return new TokenCheckFilter(apiUserDetailsService, jwtUtil);
-//    }
+    private TokenCheckFilter tokenCheckFilter(JWTUtil jwtUtil, APIUserDetailsService apiUserDetailsService){
+        return new TokenCheckFilter(apiUserDetailsService, jwtUtil);
+    }
 //    @Bean
 //    public CorsConfigurationSource corsConfigurationSource() {
 //        CorsConfiguration configuration = new CorsConfiguration();
