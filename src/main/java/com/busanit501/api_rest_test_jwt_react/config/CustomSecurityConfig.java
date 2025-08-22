@@ -2,6 +2,7 @@ package com.busanit501.api_rest_test_jwt_react.config;
 
 import com.busanit501.api_rest_test_jwt_react.security.APIUserDetailsService;
 import com.busanit501.api_rest_test_jwt_react.security.filter.APILoginFilter;
+import com.busanit501.api_rest_test_jwt_react.security.filter.RefreshTokenFilter;
 import com.busanit501.api_rest_test_jwt_react.security.filter.TokenCheckFilter;
 import com.busanit501.api_rest_test_jwt_react.security.handler.APILoginSuccessHandler;
 import com.busanit501.api_rest_test_jwt_react.util.JWTUtil;
@@ -98,10 +99,10 @@ public class CustomSecurityConfig {
         );
 
         // RefreshTokenFilter를 TokenCheckFilter 이전에 등록
-//        http.addFilterBefore(
-//                new RefreshTokenFilter("/refreshToken", jwtUtil),
-//                TokenCheckFilter.class
-//        );
+        http.addFilterBefore(
+                new RefreshTokenFilter("/refreshToken", jwtUtil),
+                TokenCheckFilter.class
+        );
         //cors 정책 설정
 //        http.cors(httpSecurityCorsConfigurer ->
 //                httpSecurityCorsConfigurer.configurationSource(corsConfigurationSource())
