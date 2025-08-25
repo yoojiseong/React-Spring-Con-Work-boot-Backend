@@ -33,8 +33,8 @@ public class JWTUtil {
         payloads.putAll(valueMap);
 
         // 테스트 환경에서는 분 단위, 운영 환경에서는 일 단위로 설정
-//        int time = days * 60 * 24; // 테스트 시 분 단위 (나중에 60 * 24로 변경 가능)
-        int time = days * 60; // 테스트 시 분 단위 (나중에 60 * 24로 변경 가능)
+        int time = days * 60 * 24; // 테스트 시 분 단위 (나중에 60 * 24로 변경 가능)
+//        int time = days * 60; // 테스트 시 분 단위 (나중에 60 * 24로 변경 가능)
 
         // JWT 생성
         String jwtStr = Jwts.builder()
