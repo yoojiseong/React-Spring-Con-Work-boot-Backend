@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 //작업 순서8
 @Repository
 public interface APlUserRepository extends JpaRepository<APIUser, String> {
+    boolean existsByMid(String mid);
 }
