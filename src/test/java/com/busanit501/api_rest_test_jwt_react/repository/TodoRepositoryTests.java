@@ -24,7 +24,7 @@ public class TodoRepositoryTests {
         IntStream.rangeClosed(1, 100).forEach(i -> {
             Todo todo = Todo.builder()
                     .title("Todo..." + i)
-                    .dueDate(LocalDate.of(2022, (i % 12) + 1, (i % 28) + 1)) // 일(day) 값 수정
+                    .dueDate(LocalDate.of(2025, (i % 12) + 1, (i % 28) + 1)) // 일(day) 값 수정
                     .writer("user" + (i % 10))
                     .complete(false)
                     .build();
@@ -37,8 +37,8 @@ public class TodoRepositoryTests {
     @Test
     public void testSearch() {
         PageRequestDTO pageRequestDTO = PageRequestDTO.builder()
-                .from(LocalDate.of(2022, 10, 1))
-                .to(LocalDate.of(2022, 12, 31))
+                .from(LocalDate.of(2025, 10, 1))
+                .to(LocalDate.of(2025, 12, 31))
                 .build();
 
         Page<TodoDTO> result = todoRepository.list(pageRequestDTO);

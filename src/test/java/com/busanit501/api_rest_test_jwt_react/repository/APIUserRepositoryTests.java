@@ -36,4 +36,18 @@ public class APIUserRepositoryTests {
             log.info("Saved APIUser: " + apiUser);
         });
     }
+    @Test
+    public void testInsert() {
+
+            // APIUser 객체 생성
+            APIUser apiUser = APIUser.builder()
+                    .mid("lsy2") // 사용자 ID 설정
+                    .mpw(passwordEncoder.encode("1234")) // 비밀번호 암호화
+                    .build();
+            // 데이터 저장
+            apiUserRepository.save(apiUser);
+            // 로그 출력
+            log.info("Saved APIUser: " + apiUser);
+
+    }
 }
