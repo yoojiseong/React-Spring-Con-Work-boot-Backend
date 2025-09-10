@@ -1,5 +1,6 @@
 package com.busanit501.api_rest_test_jwt_react.config;
 
+import com.busanit501.api_rest_test_jwt_react.repository.APlUserRepository;
 import com.busanit501.api_rest_test_jwt_react.security.APIUserDetailsService;
 import com.busanit501.api_rest_test_jwt_react.security.filter.APILoginFilter;
 import com.busanit501.api_rest_test_jwt_react.security.filter.RefreshTokenFilter;

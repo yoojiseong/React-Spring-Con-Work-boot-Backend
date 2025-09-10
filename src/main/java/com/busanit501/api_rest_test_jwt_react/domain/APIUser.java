@@ -18,8 +18,15 @@ public class APIUser {
 
     private String mpw; // 사용자 비밀번호
 
+    // 몽고디비 추가
+    // 몽고디비에 저장된 프로필 이미지의 File ID
+    private String profileImg;
+
     // 비밀번호 변경 메서드
     public void changePw(String mpw) {
         this.mpw = mpw;
+    }
+    public void changeProfileImg(String profileImg) {
+        this.profileImg = profileImg;
     }
 }

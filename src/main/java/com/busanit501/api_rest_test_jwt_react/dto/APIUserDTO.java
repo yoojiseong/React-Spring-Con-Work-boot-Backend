@@ -16,11 +16,13 @@ public class APIUserDTO extends User {
 
     private String mid; // 사용자 ID
     private String mpw; // 사용자 비밀번호
+    private String profileImg;
 
     // 생성자
-    public APIUserDTO(String username, String password, Collection<GrantedAuthority> authorities) {
+    public APIUserDTO(String username, String password, Collection<GrantedAuthority> authorities, String profileImg) {
         super(username, password, authorities); // 부모 클래스(User)의 생성자 호출
         this.mid = username;
         this.mpw = password;
+        this.profileImg = profileImg;
     }
 }
