@@ -5,46 +5,49 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 @Data
-@JsonIgnoreProperties(ignoreUnknown = true)  // ✅ 예기치 않은 필드는 무시
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AiPredictionResponseDTO {
 
-    @JsonProperty("prediction")  // ✅ Flask 응답의 "prediction" 필드 추가
+    // ✅ Flask의 상태 응답을 받기 위한 필드 추가
+    @JsonProperty("status")
+    private String status;
+
+    @JsonProperty("prediction")
     private String prediction;
 
-    private String filename; // Flask 응답의 filename 필드
+    private String filename;
 
     @JsonProperty("confidence")
-    private String confidence; // 예측에 대한 신뢰도 (문자열로 변경, e.g., "95.00%")
+    private String confidence;
 
     @JsonProperty("class_index")
-    private int classIndex; // Flask 응답의 predicted_class 필드 매핑
+    private int classIndex;
 
     @JsonProperty("predicted_class")
-    private String predictedClass; // Flask 응답의 predicted_class 필드
+    private String predictedClass;
 
-    // ✅ Flask 응답의 이미지 또는 동영상 파일 URL
-    @JsonProperty("file_url")
-    private String fileUrl;  // YOLO 결과물의 미리보기 URL
+    // ✅ Flask의 상태 응답에서는 'url' 필드로 결과 파일 경로가 올 수 있음
+    @JsonProperty("url")
+    private String fileUrl;
 
     @JsonProperty("download_url")
-    private String downloadUrl; // YOLO 결과물의 다운로드 URL
+    private String downloadUrl;
 
     @JsonProperty("message")
-    private String message; // YOLO 결과물의 message
+    private String message;
 
     @JsonProperty("request_id")
-    private String requestId; // YOLO 결과물의 requestId
+    private String requestId;
 
     @JsonProperty("file_type")
-    private String fileType; // YOLO 결과물의 file_type
+    private String fileType;
 
     @JsonProperty("status_url")
-    private String statusUrl; // YOLO 결과물의 status_url
+    private String statusUrl;
 
     @JsonProperty("s3_url")
-    private String s3Url; // YOLO 결과물의 status_url
+    private String s3Url;
 
     @JsonProperty("original_url")
-    private String originalUrl; // YOLO 결과물의 status_url
-
+    private String originalUrl;
 }
